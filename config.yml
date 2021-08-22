@@ -1,0 +1,26 @@
+accounts:
+  - name: alice
+    coins: ["20000orionis", "200000000stake","20000orin"]
+  - name: bob
+    coins: ["10000orionis", "100000000stake","10000orin"]
+validator:
+  name: alice
+  staked: "100000000stake"
+client:
+  vuex:
+    path: "vue/src/store"
+  openapi:
+    path: "docs/static/openapi.yml"
+faucet:
+  name: bob
+  coins: ["5orionis", "100000stake","50orin"]
+genesis:
+  app_state:
+    oracle:
+      params:
+        claim_params:
+          ONRClaim: # This is our oracle 'type'
+            vote_period: 3 # Voting round duration in blocks
+            claim_type: 'ONRClaim' # Oracle type again
+            prevote: true # Require commit-reveal type voting to avoid free-rider problem
+            vote_threshold: '0.5' # Validator power threshold required to reach consensus

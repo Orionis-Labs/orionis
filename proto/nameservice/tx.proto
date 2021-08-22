@@ -1,0 +1,42 @@
+syntax = "proto3";
+package orionislabs.orionis.nameservice;
+
+// this line is used by starport scaffolding # proto/tx/import
+import "nameservice/whois.proto";
+
+option go_package = "github.com/orionis-labs/orionis/x/nameservice/types";
+
+// Msg defines the Msg service.
+service Msg {
+    // this line is used by starport scaffolding # proto/tx/rpc
+  rpc CreateWhois(MsgCreateWhois) returns (MsgCreateWhoisResponse);
+  rpc UpdateWhois(MsgUpdateWhois) returns (MsgUpdateWhoisResponse);
+  rpc DeleteWhois(MsgDeleteWhois) returns (MsgDeleteWhoisResponse);
+}
+
+// this line is used by starport scaffolding # proto/tx/message
+message MsgCreateWhois {
+  string creator = 1;
+  string uniqueId = 2;
+  string price = 3;
+}
+
+message MsgCreateWhoisResponse {
+  uint64 id = 1;
+}
+
+message MsgUpdateWhois {
+  string creator = 1;
+  uint64 id = 2;
+  string uniqueId = 3;
+  string price = 4;
+}
+
+message MsgUpdateWhoisResponse { }
+
+message MsgDeleteWhois {
+  string creator = 1;
+  uint64 id = 2;
+}
+
+message MsgDeleteWhoisResponse { }
